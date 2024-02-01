@@ -2,12 +2,152 @@
 
 import { ReactNode, createContext, useContext, useMemo } from "react";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-import { CssBaseline, Theme } from "@mui/material";
+import { CssBaseline, Shadows, Theme, ThemeOptions } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { DarkModeContext } from "./darkmode";
-import { muiDarkThemeConfig, muiLightThemeConfig } from "@/theme/src";
+import { catppuccinColors, rosePineColors } from "@coding-club-gct/theme";
+import colorsea from "colorsea";
 
 export const ThemeContext = createContext<Theme | null>(null);
+
+// Rose pine theme
+// const primaryLight = rosePineColors.light.iris;
+// const secondaryLight = rosePineColors.light.foam;
+
+// const primaryDark = rosePineColors.dark.iris;
+// const secondaryDark = rosePineColors.dark.foam;
+
+// const commonConfigs: ThemeOptions = {
+//     shadows: new Array(25).fill("none") as Shadows,
+//     shape: {
+//         borderRadius: 0,
+//     },
+//     typography: {
+//         fontFamily: "Open Sans",
+//         button: {
+//             textTransform: "none",
+//         },
+//     }
+// };
+
+// const muiDarkThemeConfig: ThemeOptions = {
+//     ...commonConfigs,
+//     palette: {
+//         mode: "dark",
+//         primary: {
+//             light: colorsea(primaryDark).lighten(5).hex(),
+//             main: primaryDark,
+//             dark: colorsea(primaryDark).darken(5).hex(),
+//         },
+//         secondary: {
+//             light: colorsea(secondaryDark).lighten(5).hex(),
+//             main: secondaryDark,
+//             dark: colorsea(secondaryDark).darken(5).hex(),
+//         },
+//         background: {
+//             default: rosePineColors.dark.base,
+//             paper: rosePineColors.dark.surface,
+//         },
+//         text: {
+//             primary: rosePineColors.dark.text,
+//             secondary: rosePineColors.dark.overlay,
+//         },
+//     },
+// };
+
+// const muiLightThemeConfig: ThemeOptions = {
+//     ...commonConfigs,
+//     palette: {
+//         mode: "light",
+//         primary: {
+//             light: colorsea(primaryLight).lighten(5).hex(),
+//             main: primaryLight,
+//             dark: colorsea(primaryLight).darken(5).hex(),
+//         },
+//         secondary: {
+//             light: colorsea(secondaryLight).lighten(5).hex(),
+//             main: secondaryLight,
+//             dark: colorsea(secondaryLight).darken(5).hex(),
+//         },
+//         background: {
+//             default: rosePineColors.light.base,
+//             paper: rosePineColors.light.surface,
+//         },
+//         text: {
+//             primary: rosePineColors.light.text,
+//             secondary: rosePineColors.light.surface,
+//         },
+//     },
+// };
+
+const primaryLight = catppuccinColors.light.mauve;
+const secondaryLight = catppuccinColors.light.pink;
+
+const primaryDark = catppuccinColors.dark.mauve;
+const secondaryDark = catppuccinColors.dark.pink;
+
+const commonConfigs: ThemeOptions = {
+  shadows: new Array(25).fill("none") as Shadows,
+  shape: {
+    borderRadius: 0,
+  },
+  typography: {
+    fontFamily: "Open Sans",
+    button: {
+      textTransform: "none",
+    },
+  }
+};
+
+const muiDarkThemeConfig: ThemeOptions = {
+  ...commonConfigs,
+  palette: {
+    mode: "dark",
+    primary: {
+      light: colorsea(primaryDark).lighten(5).hex(),
+      main: primaryDark,
+      dark: colorsea(primaryDark).darken(5).hex(),
+    },
+    secondary: {
+      light: colorsea(secondaryDark).lighten(5).hex(),
+      main: secondaryDark,
+      dark: colorsea(secondaryDark).darken(5).hex(),
+    },
+    background: {
+      default: catppuccinColors.dark.base,
+      paper: catppuccinColors.dark.mantle,
+    },
+    text: {
+      primary: catppuccinColors.dark.text,
+      secondary: catppuccinColors.dark.subtext0,
+    },
+  },
+};
+
+const muiLightThemeConfig: ThemeOptions = {
+  ...commonConfigs,
+  palette: {
+    mode: "light",
+    primary: {
+      light: colorsea(primaryLight).lighten(5).hex(),
+      main: primaryLight,
+      dark: colorsea(primaryLight).darken(5).hex(),
+    },
+    secondary: {
+      light: colorsea(secondaryLight).lighten(5).hex(),
+      main: secondaryLight,
+      dark: colorsea(secondaryLight).darken(5).hex(),
+    },
+    background: {
+      default: catppuccinColors.light.base,
+      paper: catppuccinColors.light.mantle,
+    },
+    text: {
+      primary: catppuccinColors.light.text,
+      secondary: catppuccinColors.light.subtext0,
+    },
+  },
+};
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
     const { darkMode } = useContext(DarkModeContext);

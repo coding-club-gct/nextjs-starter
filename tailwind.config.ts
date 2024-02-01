@@ -1,4 +1,5 @@
-import { tailwindConfig } from './src/theme/src'
+import { catppuccinColors, generateTailwindConfig, rosePineColors } from "@coding-club-gct/theme"
 
-const config = tailwindConfig
+// const config = generateTailwindConfig(rosePineColors)
+const config = generateTailwindConfig(catppuccinColors)
 export default config
